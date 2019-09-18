@@ -15,6 +15,12 @@ class CharacterList extends React.Component {
                     <h1>Breaking Bad Characters</h1>
                     <div>
                         {/* Breaking Bad Characters Here */}
+                        {this.props.bbloading === true?
+                        <h1>Loading</h1>
+                        :
+                        this.props.bbcharacters.map(val => {
+                            return <h1>{val.name}</h1>
+                        })}
                     </div>
                 </aside>
                 <aside>
@@ -37,7 +43,10 @@ function mapStateToProps(reduxState){
     console.log(reduxState);
     return{
         characters: reduxState.starWarsReducer.characters,
-        loading: reduxState.starWarsReducer.loading
+        loading: reduxState.starWarsReducer.loading,
+
+        bbcharacters: reduxState.breakingBadReducer.characters,
+        bbloading: reduxState.breakingBadReducer.loading
     }
 }
 

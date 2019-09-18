@@ -4,10 +4,12 @@ import './App.css';
 import {connect} from 'react-redux';
 import {updateFavChar} from './redux/reducers/showReducer';
 import {getStarWarsCharacters} from "./redux/reducers/starWarsReducer";
+import {getBreakingBadCharacters} from "./redux/reducers/breakingBadReducers";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.getStarWarsCharacters();
+    this.props.getBreakingBadCharacters();
   }
   handleCharChange = e => {
     this.props.updateFavChar(e.target.value);
@@ -34,5 +36,6 @@ function mapStateToProps(reduxState) {
 
 export default connect(mapStateToProps, {
   updateFavChar,
-  getStarWarsCharacters
+  getStarWarsCharacters,
+  getBreakingBadCharacters
 })(App);
